@@ -15,6 +15,11 @@ namespace Rotatable
     {
         private Bitmap img;
         SpritePixel[,] spritePixels = new SpritePixel[0, 0];
+
+        [
+        Category("Appearance"),
+        Description("The image to display."),
+        ]
         public Bitmap image
         {
             get
@@ -24,6 +29,10 @@ namespace Rotatable
             set
             {
                 img = value;
+                Console.WriteLine(value);
+
+                //this calls the set size method
+                this.Size = this.Size;
                 this.Refresh();
             }
         }
@@ -47,6 +56,29 @@ namespace Rotatable
                 sinTheta = Math.Sin(angle);
                 this.Refresh();
             }
+        }
+
+        private void setSize(object sender, EventArgs e)
+        {
+            if (img != null)
+            {
+                Console.WriteLine("in");
+                int crosslength = (int)(Math.Sqrt((img.Width * img.Width) + (img.Height * img.Height)));
+                this.Size = new Size(crosslength, crosslength);
+                Console.WriteLine(crosslength + " " + this.Size.ToString());
+            }
+        }
+
+
+        public RotateablePictureBox()
+        {
+            this.Resize += new EventHandler(setSize);
+            Angle = 0;
+            image = null;
+            this.Location = new Point(100, 100);
+            this.Size = new Size(100, 100);
+            BackColor = Color.Transparent;
+            this.Paint += new PaintEventHandler(this.Sprite_Paint);
         }
 
         public RotateablePictureBox(Bitmap pic = null)
