@@ -13,13 +13,37 @@ namespace Rotatable
 {
     public class RotateablePictureBox : PictureBox
     {
+        //Contains the private variables
+        #region Private Properties
         private Bitmap img;
-        SpritePixel[,] spritePixels = new SpritePixel[0, 0];
+        private SpritePixel[,] spritePixels = new SpritePixel[0, 0];
+        private float angle = 0;
+        private double cosTheta = 1;
+        private double sinTheta = 0;
+        private class SpritePixel
+        {
+            public Color color;
+            public float x;
+            public float y;
+            public SpritePixel(float X, float Y, Color color)
+            {
+                this.color = color;
+                this.x = X;
+                this.y = Y;
+            }
+        }
+        #endregion
+
+        //Contains the publically accessible properties for the class
+        #region Public Properties
 
         [
-        Category("Appearance"),
-        Description("The image to display."),
+            Category("Appearance"),
+            Description("The image to display."),
         ]
+        /// <summary>
+        /// The image to display.
+        /// </summary>
         public Bitmap image
         {
             get
@@ -29,7 +53,6 @@ namespace Rotatable
             set
             {
                 img = value;
-                Console.WriteLine(value);
 
                 //this calls the set size method
                 this.Size = this.Size;
@@ -37,9 +60,10 @@ namespace Rotatable
             }
         }
 
-        private float angle = 0;
-        private double cosTheta = 1;
-        double sinTheta = 0;
+        [
+            Category("Appearance"),
+            Description("The angle at which the image is rotated. angle is measured in degrees.")
+        ]
         /// <summary>
         /// Angle is in degrees
         /// </summary>
@@ -58,31 +82,23 @@ namespace Rotatable
             }
         }
 
-        private void setSize(object sender, EventArgs e)
-        {
-            if (img != null)
-            {
-                Console.WriteLine("in");
-                int crosslength = (int)(Math.Sqrt((img.Width * img.Width) + (img.Height * img.Height)));
-                this.Size = new Size(crosslength, crosslength);
-                Console.WriteLine(crosslength + " " + this.Size.ToString());
-            }
-        }
+        #endregion
 
-
+        //Contains the constructors for the class
+        #region Constructors
         public RotateablePictureBox()
         {
-            this.Resize += new EventHandler(setSize);
-            Angle = 0;
-            image = null;
-            this.Location = new Point(100, 100);
-            this.Size = new Size(100, 100);
-            BackColor = Color.Transparent;
-            this.Paint += new PaintEventHandler(this.Sprite_Paint);
+            initialize(null);
         }
 
-        public RotateablePictureBox(Bitmap pic = null)
+        public RotateablePictureBox(Bitmap pic)
         {
+            initialize(pic);
+        }
+
+        private void initialize(Bitmap pic)
+        {
+            this.Resize += new EventHandler(setSize);
             Angle = 0;
             image = pic;
             this.Location = new Point(100, 100);
@@ -98,6 +114,18 @@ namespace Rotatable
             BackColor = Color.Transparent;
             this.Paint += new PaintEventHandler(this.Sprite_Paint);
         }
+        #endregion
+
+        //Contains functions triggered by events
+        #region Events
+        private void setSize(object sender, EventArgs e)
+        {
+            if (img != null)
+            {
+                int crosslength = (int)(Math.Sqrt((img.Width * img.Width) + (img.Height * img.Height)));
+                this.Size = new Size(crosslength, crosslength);
+            }
+        }
 
         private void Sprite_Paint(object sender, PaintEventArgs e)
         {
@@ -110,20 +138,10 @@ namespace Rotatable
                 e.Graphics.FillRectangle(new SolidBrush(BackColor), this.Location.X, this.Location.Y, Width, Height);
             }
         }
+        #endregion
 
-        private class SpritePixel
-        {
-            public Color color;
-            public float x;
-            public float y;
-            public SpritePixel(float X, float Y, Color color)
-            {
-                this.color = color;
-                this.x = X;
-                this.y = Y;
-            }
-        }
-
+        //Contains internal functions for the class
+        #region Private Functions
         private void DrawImage(PaintEventArgs e)
         {
             spritePixels = new SpritePixel[img.Width, img.Height];
@@ -147,7 +165,6 @@ namespace Rotatable
                 }
             }
         }
-
         /// <summary>
         /// Rotates one point around another
         /// </summary>
@@ -155,7 +172,6 @@ namespace Rotatable
         /// <param name="centerPoint">The center point of rotation.</param>
         /// <param name="angleInDegrees">The rotation angle in degrees.</param>
         /// <returns>Rotated point</returns>
-
         private Point RotatePoint(Point pointToRotate, Point centerPoint)
         {
             return new Point
@@ -170,5 +186,8 @@ namespace Rotatable
                     cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
             };
         }
+
+        #endregion
+
     }
 }
