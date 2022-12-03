@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace C_Sharp
+namespace Rotatable
 {
-    public class Sprite : PictureBox
+    public class RotateablePictureBox : PictureBox
     {
         private Bitmap img;
-        SpritePixel[,] spritePixels = new SpritePixel[0,0];
+        SpritePixel[,] spritePixels = new SpritePixel[0, 0];
         public Bitmap image
         {
             get
@@ -38,7 +38,7 @@ namespace C_Sharp
         {
             get
             {
-                return angle;
+                return angle * (float)(180 / Math.PI);
             }
             set
             {
@@ -49,7 +49,7 @@ namespace C_Sharp
             }
         }
 
-        public Sprite(Bitmap pic = null)
+        public RotateablePictureBox(Bitmap pic = null)
         {
             Angle = 0;
             image = pic;
@@ -79,7 +79,7 @@ namespace C_Sharp
             }
         }
 
-        private class SpritePixel 
+        private class SpritePixel
         {
             public Color color;
             public float x;
@@ -99,8 +99,8 @@ namespace C_Sharp
             {
                 for (int j = 0; img.Height > j; j++)
                 {
-                    float x = i - img.Width/2;
-                    float y = j - img.Height/2;
+                    float x = i - img.Width / 2;
+                    float y = j - img.Height / 2;
                     Point rotatedPoint = RotatePoint(new Point((int)Math.Round((double)x, 0), (int)Math.Round((double)y, 0)), new Point(0, 0));
                     spritePixels[i, j] = new SpritePixel(rotatedPoint.X, rotatedPoint.Y, img.GetPixel(i, j));
                 }
@@ -111,7 +111,7 @@ namespace C_Sharp
                 for (int j = 0; spritePixels.GetLength(1) > j; j++)
                 {
                     SpritePixel pixel = spritePixels[i, j];
-                    e.Graphics.FillRectangle(new SolidBrush(pixel.color), new RectangleF(pixel.x + this.Width/2, pixel.y + this.Height/2, 1, 1));
+                    e.Graphics.FillRectangle(new SolidBrush(pixel.color), new RectangleF(pixel.x + this.Width / 2, pixel.y + this.Height / 2, 1, 1));
                 }
             }
         }
