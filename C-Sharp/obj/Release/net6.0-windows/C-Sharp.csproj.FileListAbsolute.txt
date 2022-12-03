@@ -1,0 +1,13 @@
+C:\Users\User\Rotatable-PictureBox\C-Sharp\bin\Release\net6.0-windows\C-Sharp.deps.json
+C:\Users\User\Rotatable-PictureBox\C-Sharp\bin\Release\net6.0-windows\C-Sharp.dll
+C:\Users\User\Rotatable-PictureBox\C-Sharp\bin\Release\net6.0-windows\C-Sharp.pdb
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.csproj.AssemblyReference.cache
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.csproj.ResolveComReference.cache
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.AssemblyInfoInputs.cache
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.AssemblyInfo.cs
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.csproj.CoreCompileInputs.cache
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.dll
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\refint\C-Sharp.dll
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\C-Sharp.pdb
+C:\Users\User\Rotatable-PictureBox\C-Sharp\obj\Release\net6.0-windows\ref\C-Sharp.dll

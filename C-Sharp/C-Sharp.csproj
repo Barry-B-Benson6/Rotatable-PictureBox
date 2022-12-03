@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+	<UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>C_Sharp</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>rotatable_pictureboxs_c_sharp</PackageId>
+    <Title>Rotatable Pictureboxs for C#</Title>
+    <Authors>Barry-B-Benson6</Authors>
+    <Product>Rotatable Pictureboxs for C#</Product>
+    <Description>This is package contains a rotatable PictureBox control</Description>
+    <PackageProjectUrl>https://github.com/Barry-B-Benson6/Rotatable-PictureBox</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Barry-B-Benson6/Rotatable-PictureBox</RepositoryUrl>
+    <PackageTags>winforms;pictureboxl</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
+  </ItemGroup>
+
+</Project>
