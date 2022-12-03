@@ -53,9 +53,7 @@ namespace Rotatable
             set
             {
                 img = value;
-
-                //this calls the set size method
-                this.Size = this.Size;
+                setSize(new object(), new EventArgs());
                 this.Refresh();
             }
         }
