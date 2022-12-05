@@ -60,7 +60,7 @@ namespace Rotatable
 
         [
             Category("Appearance"),
-            Description("The angle at which the image is rotated. angle is measured in degrees.")
+            Description("The angle at which the image is rotated. angle is measured in degrees going clockwise.")
         ]
         /// <summary>
         /// Angle is in degrees
@@ -127,6 +127,10 @@ namespace Rotatable
 
         private void Sprite_Paint(object sender, PaintEventArgs e)
         {
+            if (Image != null)
+            {
+                Image = null;
+            }
             if (image != null)
             {
                 DrawImage(e);
@@ -142,26 +146,9 @@ namespace Rotatable
         #region Private Functions
         private void DrawImage(PaintEventArgs e)
         {
-            spritePixels = new SpritePixel[img.Width, img.Height];
-            for (int i = 0; img.Width > i; i++)
-            {
-                for (int j = 0; img.Height > j; j++)
-                {
-                    float x = i - img.Width / 2;
-                    float y = j - img.Height / 2;
-                    Point rotatedPoint = RotatePoint(new Point((int)Math.Round((double)x, 0), (int)Math.Round((double)y, 0)), new Point(0, 0));
-                    spritePixels[i, j] = new SpritePixel(rotatedPoint.X, rotatedPoint.Y, img.GetPixel(i, j));
-                }
-            }
-
-            for (int i = 0; spritePixels.GetLength(0) > i; i++)
-            {
-                for (int j = 0; spritePixels.GetLength(1) > j; j++)
-                {
-                    SpritePixel pixel = spritePixels[i, j];
-                    e.Graphics.FillRectangle(new SolidBrush(pixel.color), new RectangleF(pixel.x + this.Width / 2, pixel.y + this.Height / 2, 1, 1));
-                }
-            }
+            e.Graphics.TranslateTransform(this.Width / 2, this.Height / 2);
+            e.Graphics.RotateTransform((float)(angle * 180 / Math.PI));
+            e.Graphics.DrawImage(img, new Point(-img.Width / 2, -img.Height / 2));
         }
         /// <summary>
         /// Rotates one point around another
@@ -184,8 +171,6 @@ namespace Rotatable
                     cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
             };
         }
-
         #endregion
-
     }
 }
