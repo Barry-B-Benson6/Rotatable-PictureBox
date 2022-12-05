@@ -16,10 +16,7 @@ namespace Rotatable
         //Contains the private variables
         #region Private Properties
         private Bitmap img;
-        private SpritePixel[,] spritePixels = new SpritePixel[0, 0];
         private float angle = 0;
-        private double cosTheta = 1;
-        private double sinTheta = 0;
         private class SpritePixel
         {
             public Color color;
@@ -69,13 +66,11 @@ namespace Rotatable
         {
             get
             {
-                return angle * (float)(180 / Math.PI);
+                return angle;
             }
             set
             {
-                angle = value * ((float)Math.PI / 180);
-                cosTheta = Math.Cos(angle);
-                sinTheta = Math.Sin(angle);
+                angle = value;
                 this.Refresh();
             }
         }
@@ -147,29 +142,8 @@ namespace Rotatable
         private void DrawImage(PaintEventArgs e)
         {
             e.Graphics.TranslateTransform(this.Width / 2, this.Height / 2);
-            e.Graphics.RotateTransform((float)(angle * 180 / Math.PI));
+            e.Graphics.RotateTransform(angle);
             e.Graphics.DrawImage(img, new Point(-img.Width / 2, -img.Height / 2));
-        }
-        /// <summary>
-        /// Rotates one point around another
-        /// </summary>
-        /// <param name="pointToRotate">The point to rotate.</param>
-        /// <param name="centerPoint">The center point of rotation.</param>
-        /// <param name="angleInDegrees">The rotation angle in degrees.</param>
-        /// <returns>Rotated point</returns>
-        private Point RotatePoint(Point pointToRotate, Point centerPoint)
-        {
-            return new Point
-            {
-                X =
-                    (int)
-                    (cosTheta * (pointToRotate.X - centerPoint.X) -
-                    sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X),
-                Y =
-                    (int)
-                    (sinTheta * (pointToRotate.X - centerPoint.X) +
-                    cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
-            };
         }
         #endregion
     }
