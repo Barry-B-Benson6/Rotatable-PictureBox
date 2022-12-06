@@ -7,14 +7,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>rotatable_pictureboxs_c_sharp</PackageId>
-    <Title>Rotatable Pictureboxs for C#</Title>
+    <PackageId>Rotatable-Pictureboxs</PackageId>
+    <Title>Rotatable Pictureboxs</Title>
     <Authors>Barry-B-Benson6</Authors>
-    <Product>Rotatable Pictureboxs for C#</Product>
+    <Product>Rotatable Pictureboxs</Product>
     <Description>This is package contains a rotatable PictureBox control</Description>
     <PackageProjectUrl>https://github.com/Barry-B-Benson6/Rotatable-PictureBox</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Barry-B-Benson6/Rotatable-PictureBox</RepositoryUrl>
     <PackageTags>winforms;pictureboxl</PackageTags>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "C-Sharp/1.0.0": {
+      "C-Sharp/1.1.0": {
         "runtime": {
           "C-Sharp.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "C-Sharp/1.0.0": {
+    "C-Sharp/1.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

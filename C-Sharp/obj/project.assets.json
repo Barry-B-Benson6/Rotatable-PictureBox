@@ -12,10 +12,10 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\User\\Rotatable-PictureBox\\C-Sharp\\C-Sharp.csproj",
-      "projectName": "rotatable_pictureboxs_c_sharp",
+      "projectName": "Rotatable-Pictureboxs",
       "projectPath": "C:\\Users\\User\\Rotatable-PictureBox\\C-Sharp\\C-Sharp.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\Rotatable-PictureBox\\C-Sharp\\obj\\",

@@ -17,6 +17,7 @@ namespace Rotatable
         #region Private Properties
         private Bitmap img;
         private float angle = 0;
+        private double multiplier = 1;
         private class SpritePixel
         {
             public Color color;
@@ -115,8 +116,9 @@ namespace Rotatable
         {
             if (img != null)
             {
-                int crosslength = (int)(Math.Sqrt((img.Width * img.Width) + (img.Height * img.Height)));
-                this.Size = new Size(crosslength, crosslength);
+                int crosslengthImg = (int)(Math.Sqrt((img.Width * img.Width) + (img.Height * img.Height)));
+                double shortest = this.Width < this.Height ? this.Width : this.Height;
+                multiplier = (double)shortest / (double)crosslengthImg;
             }
         }
 
@@ -143,7 +145,7 @@ namespace Rotatable
         {
             e.Graphics.TranslateTransform(this.Width / 2, this.Height / 2);
             e.Graphics.RotateTransform(angle);
-            e.Graphics.DrawImage(img, new Point(-img.Width / 2, -img.Height / 2));
+            e.Graphics.DrawImage(img, (float)-(img.Width / 2 * multiplier), (float)-(img.Height / 2 * multiplier), (float)(img.Width * multiplier), (float)(img.Height * multiplier));
         }
         #endregion
     }
