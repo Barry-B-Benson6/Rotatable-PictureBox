@@ -51,7 +51,7 @@ namespace Rotatable
             set
             {
                 img = value;
-                setSize(new object(), new EventArgs());
+                SetSize(new object(), new EventArgs());
                 this.Refresh();
             }
         }
@@ -92,7 +92,7 @@ namespace Rotatable
 
         private void initialize(Bitmap pic)
         {
-            this.Resize += new EventHandler(setSize);
+            this.Resize += new EventHandler(SetSize);
             Angle = 0;
             image = pic;
             this.Location = new Point(100, 100);
@@ -112,7 +112,7 @@ namespace Rotatable
 
         //Contains functions triggered by events
         #region Events
-        private void setSize(object sender, EventArgs e)
+        private void SetSize(object sender, EventArgs e)
         {
             if (img != null)
             {
